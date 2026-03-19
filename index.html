@@ -1,46 +1,38 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جامعة حمص | منصة الرندرة الذكية</title>
-    <link rel="stylesheet" href="style.css">
+    <title>جامعة حمص - رندرة الذكاء الاصطناعي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="syria-top-bar"></div>
-
+    <div class="syrian-top-bar"></div>
+    
     <header class="homs-header">
-        <div class="header-content">
-            <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" alt="شعار جامعة حمص" class="uni-logo">
-            <div class="titles">
-                <h1>الجمهورية العربية السورية</h1>
-                <h2>جامعة حمص - كلية الهندسة المعمارية</h2>
-                <h3>مختبر الذكاء الاصطناعي (Nano Banana)</h3>
-            </div>
+        <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" class="uni-logo">
+        <div class="titles">
+            <h1>الجمهورية العربية السورية</h1>
+            <h2>جامعة حمص - كلية الهندسة المعمارية</h2>
+            <p>مختبر نانو بنانا للرندرة الذكية</p>
         </div>
     </header>
 
-    <main class="container">
-        <section class="render-box">
-            <div class="input-group">
-                <label>أدخل الوصف المعماري للمشروع:</label>
-                <textarea id="promptInput" placeholder="مثلاً: فيلا مودرن في حمص، واجهات حجرية، إضاءة نهارية..."></textarea>
-            </div>
-            
-            <button id="generateBtn" class="btn-syria">
-                <span>توليد الرندر الآن</span>
-            </button>
+    <div class="main-container">
+        <div class="render-card">
+            <label>وصف المشروع المعماري:</label>
+            <textarea id="promptInput" placeholder="اكتب وصفك هنا (بالإنكليزية لأفضل نتيجة)..."></textarea>
+            <button id="generateBtn" class="btn-generate">بـدء الـرنـدرة</button>
+        </div>
+        
+        <div id="resultContainer">
+            <p id="statusText">بانتظار الأوامر...</p>
+        </div>
+    </div>
 
-            <div id="resultContainer" class="result-area">
-                <p class="status-msg">انتظار إدخال البيانات...</p>
-            </div>
-        </section>
-    </main>
-
-    <footer class="homs-footer">
-        <p>تم التطوير بواسطة م. يزن - كلية الهندسة المعمارية - 2024</p>
+    <footer>
+        <p>جميع الحقوق محفوظة - جامعة حمص © 2024</p>
     </footer>
 
     <script src="script.js"></script>
