@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="البوابة الرسمية لجامعة حمص - كلية الهندسة المعمارية للرندرة باستخدام الذكاء الاصطناعي">
     <meta name="author" content="المهندس يزن">
+    <meta name="theme-color" content="#1B5E20">
     <title>جامعة حمص | منصة الرندرة المعمارية الذكية</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="syrian-enterprise-theme">
 
+    <!-- Preloader -->
     <div id="preloader" class="preloader-overlay">
         <div class="loader-content">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="جامعة حمص" class="loader-logo">
@@ -25,6 +28,7 @@
         </div>
     </div>
 
+    <!-- National Top Bar -->
     <div class="national-top-bar">
         <div class="container top-bar-flex">
             <div class="top-bar-right">
@@ -38,6 +42,7 @@
         </div>
     </div>
 
+    <!-- Main Header -->
     <header class="main-navbar">
         <div class="container nav-container">
             <div class="brand-identity">
@@ -63,6 +68,7 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-bg-elements"></div>
         <div class="container hero-content">
@@ -88,6 +94,7 @@
         </div>
     </section>
 
+    <!-- Workspace Section -->
     <section id="workspace" class="workspace-section">
         <div class="container">
             <div class="section-header text-center">
@@ -97,6 +104,7 @@
 
             <div class="workspace-grid">
                 
+                <!-- Settings Panel -->
                 <aside class="settings-panel panel-glass">
                     <div class="panel-header">
                         <h3><i class="fa-solid fa-sliders"></i> محددات المشروع</h3>
@@ -152,6 +160,7 @@
                     </div>
                 </aside>
 
+                <!-- Main Canvas Area -->
                 <div class="main-canvas-area panel-glass">
                     <div class="prompt-container">
                         <label for="promptInput" class="prompt-label">
@@ -161,7 +170,7 @@
 مثال: Modern university campus building in Homs, featuring large glass facades, green terraces, surrounded by olive trees, hyper-realistic, 8k resolution, architectural photography."></textarea>
                         
                         <div class="prompt-actions">
-                            <button class="btn-clear" onclick="document.getElementById('promptInput').value=''"><i class="fa-solid fa-trash-can"></i> مسح</button>
+                            <button class="btn-clear" onclick="clearPrompt()"><i class="fa-solid fa-trash-can"></i> مسح</button>
                             <button class="btn-magic" id="enhancePromptBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> تحسين الوصف تلقائياً</button>
                         </div>
                     </div>
@@ -196,6 +205,7 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="gallery-section">
         <div class="container">
             <div class="section-header text-center">
@@ -206,7 +216,7 @@
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="gallery-img-placeholder">
-                        <span>مشروع مركز ثقافي</span>
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663058953049/CTLGhCweHHB2cVtgPX2ihQ/gallery-cultural-center-9NPmN5cAYU33tzS63pTnTY.webp" alt="مركز ثقافي">
                     </div>
                     <div class="gallery-info">
                         <h4>مركز ثقافي بدمشق</h4>
@@ -215,7 +225,7 @@
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-img-placeholder">
-                        <span>مشروع مستشفى</span>
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663058953049/CTLGhCweHHB2cVtgPX2ihQ/gallery-medical-complex-8bNQrmc3CFLt3Np5AzBgmq.webp" alt="مجمع طبي">
                     </div>
                     <div class="gallery-info">
                         <h4>مجمع طبي في حمص</h4>
@@ -224,7 +234,7 @@
                 </div>
                 <div class="gallery-item">
                     <div class="gallery-img-placeholder">
-                        <span>مشروع تخرج</span>
+                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663058953049/CTLGhCweHHB2cVtgPX2ihQ/gallery-waterfront-development-3UHQw8EzK8TrmaE9veus2H.webp" alt="إعادة إعمار">
                     </div>
                     <div class="gallery-info">
                         <h4>إعادة إعمار الواجهة المائية</h4>
@@ -235,13 +245,13 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="developer" class="pro-footer">
         <div class="container">
             <div class="footer-grid">
                 
                 <div class="footer-col brand-col">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="جامعة حمص" class="footer-logo">
-                    <h3>جامعة حمص</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="شعار جامعة حمص">
                     <p>كلية الهندسة المعمارية - مختبر الذكاء الاصطناعي</p>
                     <div class="social-links">
                         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -287,6 +297,7 @@
         </div>
     </footer>
 
+    <!-- Image Modal -->
     <div id="imageModal" class="modal-overlay hidden">
         <div class="modal-content">
             <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
