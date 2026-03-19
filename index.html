@@ -3,53 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة جامعة حمص | المعماري الذكي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;700;900&display=swap" rel="stylesheet">
+    <meta name="description" content="البوابة الرسمية لجامعة حمص - كلية الهندسة المعمارية للرندرة باستخدام الذكاء الاصطناعي">
+    <meta name="author" content="المهندس يزن">
+    <title>جامعة حمص | منصة الرندرة المعمارية الذكية</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="main-wrapper">
-        <header>
-            <div class="top-nav">
-                <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" class="homs-logo">
-                <div class="homs-titles">
-                    <h2>جامعة حمص</h2>
-                    <p>كلية الهندسة المعمارية</p>
-                </div>
-            </div>
-        </header>
+<body class="syrian-enterprise-theme">
 
-        <section class="glass-container">
-            <div class="hero-text">
-                <h1>مختبر <span class="highlight">NANO BANANA</span></h1>
-                <p>الجيل القادم من الرندرة لمهندسي جامعة حمص</p>
+    <div id="preloader" class="preloader-overlay">
+        <div class="loader-content">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="جامعة حمص" class="loader-logo">
+            <div class="loading-bar-container">
+                <div class="loading-bar-progress"></div>
             </div>
-
-            <div class="input-card">
-                <textarea id="promptInput" placeholder="صف إبداعك المعماري هنا..."></textarea>
-                <button id="generateBtn">
-                    <span>توليد الرندر الاحترافي</span>
-                </button>
-            </div>
-
-            <div id="resultContainer" class="canvas-area">
-                <div class="status-overlay">
-                    <div class="orbit-spinner"></div>
-                    <p id="statusText">بانتظار أوامر المهندس يزن...</p>
-                </div>
-            </div>
-        </section>
-
-        <footer class="signature">
-            <div class="dev-info">
-                <span>المطور الرئيسي:</span>
-                <span class="name">المهندس يزن ❤️</span>
-            </div>
-            <div class="syria-flag">
-                <div class="red"></div><div class="white"></div><div class="green"></div>
-            </div>
-        </footer>
+            <p>جاري تهيئة بيئة العمل المعمارية...</p>
+        </div>
     </div>
+
+    <div class="national-top-bar">
+        <div class="container top-bar-flex">
+            <div class="top-bar-right">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Coat_of_arms_of_Syria.svg" alt="الجمهورية العربية السورية" class="eagle-mini">
+                <span>الجمهورية العربية السورية - وزارة التعليم العالي</span>
+            </div>
+            <div class="top-bar-left">
+                <span class="version-tag">إصدار النظام: Nano Banana 3.0</span>
+                <span class="date-time" id="systemDate">الخميس، 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <header class="main-navbar">
+        <div class="container nav-container">
+            <div class="brand-identity">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="شعار جامعة حمص" class="uni-logo">
+                <div class="brand-titles">
+                    <h1>جامعة حمص</h1>
+                    <h2>كلية الهندسة المعمارية</h2>
+                </div>
+            </div>
+            
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="#workspace" class="active"><i class="fa-solid fa-microchip"></i> منصة الرندرة</a></li>
+                    <li><a href="#gallery"><i class="fa-solid fa-images"></i> معرض المشاريع</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-building-columns"></i> عن المختبر</a></li>
+                    <li><a href="#developer"><i class="fa-solid fa-code"></i> المطور</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <button class="btn-outline-green"><i class="fa-solid fa-user"></i> تسجيل دخول طالب</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-bg-elements"></div>
+        <div class="container hero-content">
+            <div class="hero-text-area">
+                <span class="badge-pro"><i class="fa-solid fa-bolt"></i> الأسرع والأدق في سوريا</span>
+                <h1 class="hero-title">مختبر <span class="text-gradient-green">الذكاء الاصطناعي</span> المعماري</h1>
+                <p class="hero-subtitle">قم بصياغة خيالك الهندسي وتحويله إلى واقع ملموس بدقة 8K، مصمم خصيصاً لطلاب العمارة في جامعة حمص لدعم مشاريع التخرج والتصميم.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>+10,000</h3>
+                        <p>رندر مكتمل</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>4K & 8K</h3>
+                        <p>دقة التصدير</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Nano Banana</h3>
+                        <p>المحرك الأساسي</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workspace" class="workspace-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2><i class="fa-solid fa-pen-ruler"></i> استوديو التصميم الذكي</h2>
+                <p>أدخل معطيات مشروعك وحدد الخصائص الهندسية المطلوبة</p>
+            </div>
+
+            <div class="workspace-grid">
+                
+                <aside class="settings-panel panel-glass">
+                    <div class="panel-header">
+                        <h3><i class="fa-solid fa-sliders"></i> محددات المشروع</h3>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label>النمط المعماري (Style)</label>
+                        <select id="archStyle" class="pro-select">
+                            <option value="modern">حديث (Modern)</option>
+                            <option value="damascene">عربي دمشقي (Damascene)</option>
+                            <option value="islamic">إسلامي معاصر (Contemporary Islamic)</option>
+                            <option value="parametric">بارامتريك (Parametric)</option>
+                            <option value="brutalist">عمارة وحشية (Brutalist)</option>
+                            <option value="classic">كلاسيكي (Classic)</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>الإضاءة والبيئة (Lighting & Environment)</label>
+                        <select id="lightingStyle" class="pro-select">
+                            <option value="daylight">إضاءة نهارية واقعية</option>
+                            <option value="sunset">ساعة الغروب (Golden Hour)</option>
+                            <option value="night">إضاءة ليلية دراماتيكية</option>
+                            <option value="overcast">غائم (Soft Shadows)</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>نسبة الأبعاد (Aspect Ratio)</label>
+                        <div class="ratio-options">
+                            <label class="ratio-btn">
+                                <input type="radio" name="ratio" value="16:9" checked>
+                                <span>16:9<br><small>Landscape</small></span>
+                            </label>
+                            <label class="ratio-btn">
+                                <input type="radio" name="ratio" value="1:1">
+                                <span>1:1<br><small>Square</small></span>
+                            </label>
+                            <label class="ratio-btn">
+                                <input type="radio" name="ratio" value="9:16">
+                                <span>9:16<br><small>Portrait</small></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>جودة الرندر (Quality Settings)</label>
+                        <input type="range" min="1" max="100" value="80" class="pro-slider" id="qualitySlider">
+                        <div class="slider-labels">
+                            <span>سريع</span>
+                            <span>عالي الدقة</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="main-canvas-area panel-glass">
+                    <div class="prompt-container">
+                        <label for="promptInput" class="prompt-label">
+                            <i class="fa-solid fa-keyboard"></i> الوصف التفصيلي للكتلة (Prompt)
+                        </label>
+                        <textarea id="promptInput" class="pro-textarea" placeholder="اكتب وصفاً دقيقاً باللغة الإنكليزية للحصول على أفضل النتائج... 
+مثال: Modern university campus building in Homs, featuring large glass facades, green terraces, surrounded by olive trees, hyper-realistic, 8k resolution, architectural photography."></textarea>
+                        
+                        <div class="prompt-actions">
+                            <button class="btn-clear" onclick="document.getElementById('promptInput').value=''"><i class="fa-solid fa-trash-can"></i> مسح</button>
+                            <button class="btn-magic" id="enhancePromptBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> تحسين الوصف تلقائياً</button>
+                        </div>
+                    </div>
+
+                    <button id="generateBtn" class="btn-generate-massive">
+                        <span class="btn-text">بدء عملية الرندرة السيادية</span>
+                        <div class="btn-glow"></div>
+                        <i class="fa-solid fa-cube btn-icon"></i>
+                    </button>
+
+                    <div id="resultContainer" class="render-output-box">
+                        <div class="idle-state">
+                            <i class="fa-regular fa-image placeholder-icon"></i>
+                            <p id="statusText">المنصة بانتظار إرسال البيانات للمعالجة...</p>
+                            <small>سيتم عرض الصورة المعمارية هنا</small>
+                        </div>
+                        
+                        <div class="loading-state hidden" id="loadingState">
+                            <div class="syrian-spinner"></div>
+                            <p>جاري تحليل الكتلة وتوليد الإضاءة...</p>
+                        </div>
+                    </div>
+
+                    <div class="post-render-actions hidden" id="postRenderActions">
+                        <button class="btn-action btn-download"><i class="fa-solid fa-download"></i> تحميل 8K</button>
+                        <button class="btn-action btn-share"><i class="fa-solid fa-share-nodes"></i> مشاركة</button>
+                        <button class="btn-action btn-upscale"><i class="fa-solid fa-magnifying-glass-plus"></i> زيادة الدقة (Upscale)</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2><i class="fa-solid fa-trophy"></i> لوحة الشرف المعمارية</h2>
+                <p>أبرز الرندرات التي تم توليدها بواسطة طلاب جامعة حمص</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img-placeholder">
+                        <span>مشروع مركز ثقافي</span>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>مركز ثقافي بدمشق</h4>
+                        <p>النمط: بارامتريك | بواسطة: طالب سنة رابعة</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-placeholder">
+                        <span>مشروع مستشفى</span>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>مجمع طبي في حمص</h4>
+                        <p>النمط: حديث | بواسطة: طالبة سنة خامسة</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img-placeholder">
+                        <span>مشروع تخرج</span>
+                    </div>
+                    <div class="gallery-info">
+                        <h4>إعادة إعمار الواجهة المائية</h4>
+                        <p>النمط: مستدام | مشاريع التخرج 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="developer" class="pro-footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-col brand-col">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="جامعة حمص" class="footer-logo">
+                    <h3>جامعة حمص</h3>
+                    <p>كلية الهندسة المعمارية - مختبر الذكاء الاصطناعي</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-solid fa-globe"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col links-col">
+                    <h4>روابط هامة</h4>
+                    <ul>
+                        <li><a href="#">الموقع الرسمي للجامعة</a></li>
+                        <li><a href="#">مكتبة الكلية الرقمية</a></li>
+                        <li><a href="#">شؤون الطلاب</a></li>
+                        <li><a href="#">دعم تقني</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col developer-col">
+                    <h4>البصمة البرمجية</h4>
+                    <div class="dev-card">
+                        <i class="fa-solid fa-laptop-code dev-icon"></i>
+                        <div class="dev-details">
+                            <span class="dev-role">Chief Front-End Architect</span>
+                            <span class="dev-name">المهندس يزن ❤️</span>
+                        </div>
+                    </div>
+                    <p class="dev-message">"تم بناء هذه المنصة لرفع مستوى الإخراج المعماري لزملائي في جامعة حمص، باستخدام أحدث تقنيات الويب والذكاء الاصطناعي."</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2026 جميع الحقوق محفوظة لجامعة حمص والمهندس المطور.</p>
+                </div>
+                <div class="national-strip-footer">
+                    <div class="color-red"></div>
+                    <div class="color-white"></div>
+                    <div class="color-green"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
+            <img id="modalImage" src="" alt="رندر مكبر">
+            <div class="modal-actions">
+                <button class="btn-outline-green"><i class="fa-solid fa-download"></i> حفظ الصورة</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
