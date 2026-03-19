@@ -1,29 +1,18 @@
 /**
- * نظام بوابة جامعة حمص المعمارية - التحديث الشامل 2026
- * دمج محرك Hugging Face مع واجهة Nano Banana الاحترافية
+ * نظام جامعة حمص - إصلاح محرك الرندرة
  * المطور: المهندس يزن
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    // --- 1. تعريف العناصر (Mapping) ---
+    
+    // 1. تعريف العناصر بدقة (حسب الـ ID في الـ HTML الجديد)
     const generateBtn = document.getElementById("generateBtn");
     const promptInput = document.getElementById("promptInput");
-    const modelSelect = document.getElementById("archStyle"); // تم ربطه بستايل العمارة كموديل
-    const qualitySlider = document.getElementById("qualitySlider");
     const resultContainer = document.getElementById("resultContainer");
     const loadingState = document.getElementById("loadingState");
-    const statusText = document.getElementById("statusText");
+    const archStyle = document.getElementById("archStyle"); // الموديل المعماري
 
-    // الأمثلة المعمارية المحترفة
-    const examplePrompts = [
-        "Modern university campus in Homs, glass facades, sunset lighting, 8k",
-        "Parametric skyscraper design, organic shapes, futuristic architecture",
-        "Damascene traditional courtyard with a modern touch, water fountain",
-        "Sustainable green building with vertical gardens, photorealistic",
-        "Luxury villa in Syria, stone exterior, minimalist design, high-end rendering"
-    ];
-
-    // --- 2. فك تشفير مفتاح الـ API (المفتاح الخاص بك) ---
+    // 2. فك تشفير مفتاح الـ API الخاص بك
     const API_KEY = (function() {
         const arrOfPI = [
             72, 102, 95, 87, 78, 112, 113, 83, 110, 102, 114, 121, 97, 89, 74, 84, 
@@ -33,100 +22,81 @@ document.addEventListener("DOMContentLoaded", () => {
         return arrOfPI.map(c => String.fromCharCode(c)).join('');
     })();
 
-    // --- 3. وظيفة حساب الأبعاد (مهمة للموديل) ---
-    const getImageDimensions = (aspectRatio) => {
-        const [widthRatio, heightRatio] = aspectRatio.split(':').map(Number);
-        const baseSize = 512; 
-        let width = Math.floor((baseSize * widthRatio / heightRatio) / 16) * 16;
-        let height = Math.floor(baseSize / 16) * 16;
-        return { width, height };
-    };
-
-    // --- 4. محرك توليد الصور (Core Engine) ---
-    const generateArchitectureRender = async () => {
-        const promptText = promptInput.value.trim();
-        const selectedModel = "runwayml/stable-diffusion-v1-5"; // يمكنك تغيير الموديل هنا
-        const ratio = document.querySelector('input[name="ratio"]:checked').value;
-        const { width, height } = getImageDimensions(ratio);
-
-        if (!promptText) {
-            alert("باش مهندس يزن، يرجى كتابة وصف المشروع أولاً!");
+    // 3. وظيفة الرندرة الأساسية
+    const startRendering = async () => {
+        const text = promptInput.value.trim();
+        if (!text) {
+            alert("يا بشمهندس، يرجى إدخال وصف التصميم أولاً!");
             return;
         }
 
-        // تحضير الواجهة
+        // تحضير الواجهة (إظهار اللودر وإخفاء الحالة الفارغة)
         generateBtn.disabled = true;
-        generateBtn.classList.add("processing");
-        document.querySelector(".idle-state").classList.add("hidden");
+        generateBtn.style.opacity = "0.7";
+        generateBtn.innerText = "جاري المعالجة...";
+        
+        const idleState = document.querySelector(".idle-state");
+        if (idleState) idleState.classList.add("hidden");
         loadingState.classList.remove("hidden");
-        statusText.innerText = "جاري الاتصال بمخدمات الذكاء الاصطناعي...";
 
         try {
-            const response = await fetch(`https://api-inference.huggingface.co/models/${selectedModel}`, {
+            // استخدام موديل Stable Diffusion عبر Hugging Face
+            const response = await fetch("https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5", {
                 headers: {
                     Authorization: `Bearer ${API_KEY}`,
                     "Content-Type": "application/json",
                 },
                 method: "POST",
-                body: JSON.stringify({
-                    inputs: promptText,
-                    parameters: { width, height, negative_prompt: "blurry, distorted, low quality" }
-                }),
+                body: JSON.stringify({ inputs: text }),
             });
 
-            if (!response.ok) throw new Error("فشل في توليد الصورة");
+            if (!response.ok) throw new Error("API Error");
 
             const blob = await response.blob();
-            const imgUrl = URL.createObjectURL(blob);
+            const url = URL.createObjectURL(blob);
 
-            // عرض النتيجة النهائية بفخامة
+            // عرض الصورة الناتجة
             loadingState.classList.add("hidden");
             resultContainer.innerHTML = `
-                <div class="render-card">
-                    <img src="${imgUrl}" class="final-render-img" id="mainRender">
-                    <div class="render-overlay-tools">
-                        <a href="${imgUrl}" download="Yazn_Render_${Date.now()}.png" class="btn-download-pro">
-                            <i class="fa-solid fa-download"></i> حفظ الرندر بدقة عالية
-                        </a>
-                    </div>
+                <div style="width:100%; position:relative;">
+                    <img src="${url}" style="width:100%; border-radius:15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <a href="${url}" download="Homs_Uni_Render.png" 
+                       style="display:block; margin-top:15px; color:#007A3D; text-decoration:none; font-weight:bold;">
+                       <i class="fa-solid fa-download"></i> تحميل الرندر النهائي
+                    </a>
                 </div>
             `;
-            
-            statusText.innerText = "تم التوليد بنجاح! الرندر جاهز للمعاينة.";
 
         } catch (error) {
             console.error(error);
+            alert("عذراً، حدث خطأ في الاتصال بالمخدم. تأكد من الإنترنت.");
             loadingState.classList.add("hidden");
-            document.querySelector(".idle-state").classList.remove("hidden");
-            alert("حدث خطأ في المخدم، يرجى المحاولة مرة أخرى.");
+            if (idleState) idleState.classList.remove("hidden");
         } finally {
             generateBtn.disabled = false;
-            generateBtn.classList.remove("processing");
+            generateBtn.style.opacity = "1";
+            generateBtn.innerText = "بدء عملية الرندرة السيادية";
         }
     };
 
-    // --- 5. ميزات إضافية (تحسين الوصف تلقائياً) ---
-    const magicBtn = document.getElementById("enhancePromptBtn");
-    if (magicBtn) {
-        magicBtn.addEventListener("click", () => {
-            const randomPrompt = examplePrompts[Math.floor(Math.random() * examplePrompts.length)];
-            promptInput.value = randomPrompt;
-            promptInput.style.borderColor = "var(--syria-green)";
-            setTimeout(() => promptInput.style.borderColor = "", 1000);
-        });
+    // 4. ربط الزر بالوظيفة (هنا كان الخطأ)
+    if (generateBtn) {
+        generateBtn.onclick = (e) => {
+            e.preventDefault();
+            startRendering();
+        };
     }
 
-    // --- 6. تفعيل الأزرار ---
-    generateBtn.addEventListener("click", generateArchitectureRender);
-
-    // إضافة تأثير التحميل الأولي (Preloader)
-    window.addEventListener("load", () => {
-        const loader = document.getElementById("preloader");
-        if(loader) {
-            setTimeout(() => {
-                loader.style.opacity = "0";
-                setTimeout(() => loader.remove(), 1000);
-            }, 1500);
-        }
-    });
+    // 5. ميزة زر "تحسين الوصف" (Magic Button)
+    const enhanceBtn = document.getElementById("enhancePromptBtn");
+    if (enhanceBtn) {
+        enhanceBtn.onclick = () => {
+            const examples = [
+                "Modern villa with stone walls and large glass windows in Homs, daylight",
+                "Futuristic library design, parametric architecture, white concrete, 8k",
+                "Traditional Syrian house courtyard, fountain, jasmine trees, cinematic lighting"
+            ];
+            promptInput.value = examples[Math.floor(Math.random() * examples.length)];
+        };
+    }
 });
