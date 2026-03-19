@@ -1,42 +1,25 @@
-* { box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-body { margin: 0; background: #f9f9f9; color: #333; }
+/* إعادة ضبط شاملة */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+body { background-color: #f0f2f5; direction: rtl; text-align: center; }
 
-.syria-top-bar { 
-    height: 8px; 
-    background: linear-gradient(to left, #CE1126 33.3%, #ffffff 33.3%, #ffffff 66.6%, #007A3D 66.6%);
-}
+/* شريط الهوية العلوي */
+.syrian-top-bar { height: 10px; background: linear-gradient(to left, #CE1126 33.3%, #ffffff 33.3%, #ffffff 66.6%, #007A3D 66.6%); position: fixed; top: 0; width: 100%; z-index: 1000; }
 
-.homs-header { 
-    background: #fff; 
-    padding: 20px; 
-    text-align: center; 
-    border-bottom: 2px solid #eee;
-}
+/* رأس الصفحة */
+.homs-header { background: #fff; padding: 60px 20px 30px; border-bottom: 3px solid #007A3D; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.uni-logo { width: 120px; height: auto; margin-bottom: 15px; }
+.titles h1 { font-size: 1.2rem; color: #CE1126; }
+.titles h2 { font-size: 1.5rem; color: #333; margin: 10px 0; }
 
-.uni-logo { width: 100px; margin-bottom: 10px; }
+/* صندوق العمل الرئيسي */
+.main-container { max-width: 500px; margin: 40px auto; padding: 20px; }
+.render-card { background: white; border-radius: 15px; padding: 30px; shadow: 0 10px 25px rgba(0,0,0,0.1); border-right: 8px solid #CE1126; }
 
-.titles h1 { font-size: 16px; color: #666; margin: 0; }
-.titles h2 { font-size: 20px; color: #222; margin: 5px 0; }
+textarea { width: 100%; height: 120px; border: 2px solid #ddd; border-radius: 10px; padding: 15px; font-size: 1rem; margin-top: 15px; text-align: right; }
+.btn-generate { width: 100%; background: #007A3D; color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; font-size: 1.1rem; margin-top: 20px; cursor: pointer; }
 
-.container { max-width: 600px; margin: 30px auto; padding: 20px; }
+/* منطقة النتائج */
+#resultContainer { margin-top: 30px; min-height: 200px; border: 2px dashed #ccc; border-radius: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+#resultContainer img { width: 100%; height: auto; border-radius: 10px; }
 
-.render-box { 
-    background: white; 
-    padding: 25px; 
-    border-radius: 12px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    border-right: 5px solid #CE1126; /* لمسة حمراء من الهوية */
-}
-
-textarea { 
-    width: 100%; height: 120px; padding: 15px; border: 1px solid #ddd; 
-    border-radius: 8px; font-size: 16px; resize: none; margin-top: 10px;
-}
-
-.btn-syria { 
-    width: 100%; padding: 15px; background: #007A3D; color: white; 
-    border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold;
-    margin-top: 20px;
-}
-
-.btn-syria:hover { background: #005a2d; }
+footer { padding: 20px; color: #777; font-size: 0.9rem; }
