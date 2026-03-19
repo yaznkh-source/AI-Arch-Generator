@@ -3,55 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة جامعة حمص | رندرة الذكاء الاصطناعي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;900&display=swap" rel="stylesheet">
+    <title>بوابة جامعة حمص | المعماري الذكي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-overlay"></div>
-
-    <header class="main-nav">
-        <div class="nav-container">
-            <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" class="logo">
-            <div class="brand">
-                <h2>جامعة حمص</h2>
-                <p>كلية الهندسة المعمارية</p>
+    <div class="main-wrapper">
+        <header>
+            <div class="top-nav">
+                <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" class="homs-logo">
+                <div class="homs-titles">
+                    <h2>جامعة حمص</h2>
+                    <p>كلية الهندسة المعمارية</p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="hero-section">
-        <div class="glass-card">
-            <div class="badge">الجيل الثالث من الرندرة 2026</div>
-            <h1>مختبر <span class="text-gradient">Nano Banana</span> للذكاء الاصطناعي</h1>
-            <p class="subtitle">حول مخططاتك الذهنية إلى واقع بصري بدقة 8K</p>
+        <section class="glass-container">
+            <div class="hero-text">
+                <h1>مختبر <span class="highlight">NANO BANANA</span></h1>
+                <p>الجيل القادم من الرندرة لمهندسي جامعة حمص</p>
+            </div>
 
-            <div class="input-wrapper">
-                <textarea id="promptInput" placeholder="صف مشروعك المعماري بدقة... (مثال: متحف بتصميم بارامتريك على ضفاف العاصي)"></textarea>
-                <button id="generateBtn" class="sparkle-btn">
-                    <span class="btn-text">توليد التصميم</span>
+            <div class="input-card">
+                <textarea id="promptInput" placeholder="صف إبداعك المعماري هنا..."></textarea>
+                <button id="generateBtn">
+                    <span>توليد الرندر الاحترافي</span>
                 </button>
             </div>
 
-            <div id="resultContainer" class="render-canvas">
-                <div class="placeholder-content">
-                    <div class="loader-ring"></div>
-                    <p id="statusText">بانتظار إلهامك المعماري...</p>
+            <div id="resultContainer" class="canvas-area">
+                <div class="status-overlay">
+                    <div class="orbit-spinner"></div>
+                    <p id="statusText">بانتظار أوامر المهندس يزن...</p>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
 
-    <footer class="pro-footer">
-        <div class="dev-tag">
-            <span>تطوير المهندس: </span>
-            <strong class="dev-name">يـزن ❤️</strong>
-        </div>
-        <div class="syrian-identity">
-            <span>الجمهورية العربية السورية</span>
-        </div>
-    </footer>
-
+        <footer class="signature">
+            <div class="dev-info">
+                <span>المطور الرئيسي:</span>
+                <span class="name">المهندس يزن ❤️</span>
+            </div>
+            <div class="syria-flag">
+                <div class="red"></div><div class="white"></div><div class="green"></div>
+            </div>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
