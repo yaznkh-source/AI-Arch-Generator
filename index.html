@@ -1,38 +1,55 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جامعة حمص - رندرة الذكاء الاصطناعي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>بوابة جامعة حمص | رندرة الذكاء الاصطناعي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="syrian-top-bar"></div>
-    
-    <header class="homs-header">
-        <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" class="uni-logo">
-        <div class="titles">
-            <h1>الجمهورية العربية السورية</h1>
-            <h2>جامعة حمص - كلية الهندسة المعمارية</h2>
-            <p>مختبر نانو بنانا للرندرة الذكية</p>
+    <div class="bg-overlay"></div>
+
+    <header class="main-nav">
+        <div class="nav-container">
+            <img src="https://upload.wikimedia.org/wikipedia/ar/0/0e/Homs_University_Logo.png" class="logo">
+            <div class="brand">
+                <h2>جامعة حمص</h2>
+                <p>كلية الهندسة المعمارية</p>
+            </div>
         </div>
     </header>
 
-    <div class="main-container">
-        <div class="render-card">
-            <label>وصف المشروع المعماري:</label>
-            <textarea id="promptInput" placeholder="اكتب وصفك هنا (بالإنكليزية لأفضل نتيجة)..."></textarea>
-            <button id="generateBtn" class="btn-generate">بـدء الـرنـدرة</button>
-        </div>
-        
-        <div id="resultContainer">
-            <p id="statusText">بانتظار الأوامر...</p>
-        </div>
-    </div>
+    <main class="hero-section">
+        <div class="glass-card">
+            <div class="badge">الجيل الثالث من الرندرة 2026</div>
+            <h1>مختبر <span class="text-gradient">Nano Banana</span> للذكاء الاصطناعي</h1>
+            <p class="subtitle">حول مخططاتك الذهنية إلى واقع بصري بدقة 8K</p>
 
-    <footer>
-        <p>جميع الحقوق محفوظة - جامعة حمص © 2024</p>
+            <div class="input-wrapper">
+                <textarea id="promptInput" placeholder="صف مشروعك المعماري بدقة... (مثال: متحف بتصميم بارامتريك على ضفاف العاصي)"></textarea>
+                <button id="generateBtn" class="sparkle-btn">
+                    <span class="btn-text">توليد التصميم</span>
+                </button>
+            </div>
+
+            <div id="resultContainer" class="render-canvas">
+                <div class="placeholder-content">
+                    <div class="loader-ring"></div>
+                    <p id="statusText">بانتظار إلهامك المعماري...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pro-footer">
+        <div class="dev-tag">
+            <span>تطوير المهندس: </span>
+            <strong class="dev-name">يـزن ❤️</strong>
+        </div>
+        <div class="syrian-identity">
+            <span>الجمهورية العربية السورية</span>
+        </div>
     </footer>
 
     <script src="script.js"></script>
