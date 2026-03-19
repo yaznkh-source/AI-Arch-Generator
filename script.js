@@ -79,16 +79,13 @@ const updateImageCard = (imgIndex, imgUrl) => {
                         </div>`;
 };
 
-var API_KEY = (function () {
-  const arrOfPI = [
-    121, 119, 78, 101, 98, 107, 115, 121, 70, 101, 68, 122, 120, 107, 93, 95,
-    112, 82, 89, 96, 95, 101, 67, 94, 112, 124, 94, 105, 95, 123, 126, 121, 91,
-    105, 92, 127, 125,
-  ];
-  const bey = 17;
-  const decoded = arrOfPI.map((c) => String.fromCharCode(c ^ bey)).join("");
-  for (let i = 0; i < arrOfPI.length; i++) arrOfPI[i] = 0;
-  return decoded;
+var API_KEY = (function() {
+    const arrOfPI = [
+        72, 102, 95, 87, 78, 112, 113, 83, 110, 102, 114, 121, 97, 89, 74, 84, 
+        81, 77, 83, 74, 70, 104, 110, 102, 104, 97, 112, 120, 109, 79, 85, 112, 
+        121, 77, 110, 83, 74
+    ];
+    return arrOfPI.map(c => String.fromCharCode(c)).join('');
 })();
 
 //Send Requests to Hugging Face API to create images
