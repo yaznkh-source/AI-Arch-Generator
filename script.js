@@ -1,18 +1,19 @@
 /**
- * نظام جامعة حمص - إصلاح محرك الرندرة
- * المطور: المهندس يزن
+ * نظام بوابة جامعة حمص المعمارية - الإصدار النهائي 2026
+ * تطوير المهندس: يزن - مختبر الذكاء الاصطناعي
  */
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    // 1. تعريف العناصر بدقة (حسب الـ ID في الـ HTML الجديد)
+    // 1. تعريف العناصر من الواجهة الاحترافية
     const generateBtn = document.getElementById("generateBtn");
     const promptInput = document.getElementById("promptInput");
     const resultContainer = document.getElementById("resultContainer");
     const loadingState = document.getElementById("loadingState");
-    const archStyle = document.getElementById("archStyle"); // الموديل المعماري
+    const qualitySlider = document.getElementById("qualitySlider");
 
     // 2. فك تشفير مفتاح الـ API الخاص بك
+    // تم تصحيح الوظيفة لتعيد النص الصافي بدلاً من المصفوفة
     const API_KEY = (function() {
         const arrOfPI = [
             72, 102, 95, 87, 78, 112, 113, 83, 110, 102, 114, 121, 97, 89, 74, 84, 
@@ -23,80 +24,103 @@ document.addEventListener("DOMContentLoaded", () => {
     })();
 
     // 3. وظيفة الرندرة الأساسية
-    const startRendering = async () => {
-        const text = promptInput.value.trim();
-        if (!text) {
-            alert("يا بشمهندس، يرجى إدخال وصف التصميم أولاً!");
+    const handleRender = async () => {
+        const promptText = promptInput.value.trim();
+
+        if (!promptText) {
+            alert("باش مهندس يزن، يرجى إدخال وصف التصميم أولاً!");
             return;
         }
 
-        // تحضير الواجهة (إظهار اللودر وإخفاء الحالة الفارغة)
+        // تحضير الواجهة لحالة المعالجة
         generateBtn.disabled = true;
-        generateBtn.style.opacity = "0.7";
-        generateBtn.innerText = "جاري المعالجة...";
+        generateBtn.innerText = "جاري الرندرة...";
         
         const idleState = document.querySelector(".idle-state");
         if (idleState) idleState.classList.add("hidden");
+        
         loadingState.classList.remove("hidden");
+        resultContainer.innerHTML = ""; // مسح النتائج السابقة
 
         try {
-            // استخدام موديل Stable Diffusion عبر Hugging Face
+            // إرسال الطلب إلى Hugging Face
             const response = await fetch("https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5", {
                 headers: {
-                    Authorization: `Bearer ${API_KEY}`,
+                    "Authorization": `Bearer ${API_KEY}`,
                     "Content-Type": "application/json",
                 },
                 method: "POST",
-                body: JSON.stringify({ inputs: text }),
+                body: JSON.stringify({ 
+                    inputs: promptText,
+                    parameters: {
+                        negative_prompt: "blurry, bad architecture, distorted windows, low quality",
+                        num_inference_steps: 30
+                    }
+                }),
             });
 
-            if (!response.ok) throw new Error("API Error");
+            // معالجة حالة المخدم (التي ظهرت في صورتك الأخيرة)
+            if (response.status === 503) {
+                alert("المخدم حالياً قيد الإقلاع.. يرجى إعادة المحاولة بعد 30 ثانية.");
+                throw new Error("Model Loading");
+            }
+
+            if (!response.ok) throw new Error("فشل في استلام البيانات من المخدم");
 
             const blob = await response.blob();
-            const url = URL.createObjectURL(blob);
+            const imageUrl = URL.createObjectURL(blob);
 
-            // عرض الصورة الناتجة
+            // عرض الصورة الناتجة بفخامة
             loadingState.classList.add("hidden");
             resultContainer.innerHTML = `
-                <div style="width:100%; position:relative;">
-                    <img src="${url}" style="width:100%; border-radius:15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    <a href="${url}" download="Homs_Uni_Render.png" 
-                       style="display:block; margin-top:15px; color:#007A3D; text-decoration:none; font-weight:bold;">
-                       <i class="fa-solid fa-download"></i> تحميل الرندر النهائي
-                    </a>
+                <div class="render-result-wrapper">
+                    <img src="${imageUrl}" class="final-render-img" style="width:100%; border-radius:12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+                    <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
+                        <a href="${imageUrl}" download="Homs_Uni_Render_${Date.now()}.png" class="btn-outline-green" style="display:inline-block; padding:10px 20px;">
+                            <i class="fa-solid fa-download"></i> حفظ التصميم
+                        </a>
+                    </div>
                 </div>
             `;
 
         } catch (error) {
-            console.error(error);
-            alert("عذراً، حدث خطأ في الاتصال بالمخدم. تأكد من الإنترنت.");
+            console.error("Render Error:", error);
             loadingState.classList.add("hidden");
             if (idleState) idleState.classList.remove("hidden");
+            
+            if (error.message !== "Model Loading") {
+                alert("حدث خطأ تقني. تأكد من اتصال الإنترنت وحاول مجدداً.");
+            }
         } finally {
             generateBtn.disabled = false;
-            generateBtn.style.opacity = "1";
             generateBtn.innerText = "بدء عملية الرندرة السيادية";
         }
     };
 
-    // 4. ربط الزر بالوظيفة (هنا كان الخطأ)
+    // 4. ربط الأحداث (Event Listeners)
     if (generateBtn) {
-        generateBtn.onclick = (e) => {
-            e.preventDefault();
-            startRendering();
-        };
+        generateBtn.addEventListener("click", handleRender);
     }
 
-    // 5. ميزة زر "تحسين الوصف" (Magic Button)
+    // زر تحسين الوصف تلقائياً (Magic Tool)
     const enhanceBtn = document.getElementById("enhancePromptBtn");
     if (enhanceBtn) {
-        enhanceBtn.onclick = () => {
+        enhanceBtn.addEventListener("click", () => {
             const examples = [
-                "Modern villa with stone walls and large glass windows in Homs, daylight",
-                "Futuristic library design, parametric architecture, white concrete, 8k",
-                "Traditional Syrian house courtyard, fountain, jasmine trees, cinematic lighting"
+                "Modern sustainable skyscraper with glass facades and vertical gardens, 8k render",
+                "Luxury villa design in Homs, white stone exterior, cinematic lighting, architectural photography",
+                "Futuristic university campus library, parametric interior design, natural sunlight"
             ];
             promptInput.value = examples[Math.floor(Math.random() * examples.length)];
-        };
+        });
+    }
+
+    // 5. التحكم في شاشة التحميل (Preloader)
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+        setTimeout(() => {
+            preloader.style.opacity = "0";
+            setTimeout(() => preloader.remove(), 800);
+        }, 1500);
     }
 });
