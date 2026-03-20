@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="البوابة الرسمية لجامعة حمص - كلية الهندسة المعمارية للرندرة باستخدام الذكاء الاصطناعي">
-    <meta name="author" content="المهندس يزن">
+    <meta name="description" content="منصة الرندرة المعمارية الذكية - تحويل الرسومات والصور إلى رندرات احترافية باستخدام الذكاء الاصطناعي">
     <meta name="theme-color" content="#1B5E20">
-    <title>جامعة حمص | منصة الرندرة المعمارية الذكية</title>
+    <title>جامعة حمص | منصة الرندرة المعمارية الذكية - Pro Edition</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,29 +14,16 @@
     
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="syrian-enterprise-theme">
-
-    <!-- Preloader -->
-    <div id="preloader" class="preloader-overlay">
-        <div class="loader-content">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="جامعة حمص" class="loader-logo">
-            <div class="loading-bar-container">
-                <div class="loading-bar-progress"></div>
-            </div>
-            <p>جاري تهيئة بيئة العمل المعمارية...</p>
-        </div>
-    </div>
+<body>
 
     <!-- National Top Bar -->
     <div class="national-top-bar">
         <div class="container top-bar-flex">
             <div class="top-bar-right">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Coat_of_arms_of_Syria.svg" alt="الجمهورية العربية السورية" class="eagle-mini">
                 <span>الجمهورية العربية السورية - وزارة التعليم العالي</span>
             </div>
             <div class="top-bar-left">
-                <span class="version-tag">إصدار النظام: Nano Banana 3.0</span>
-                <span class="date-time" id="systemDate">الخميس، 2026</span>
+                <span>🌸 عرض الربيع - خصم 50% | الإصدار الاحترافي</span>
             </div>
         </div>
     </div>
@@ -46,268 +32,775 @@
     <header class="main-navbar">
         <div class="container nav-container">
             <div class="brand-identity">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="شعار جامعة حمص" class="uni-logo">
                 <div class="brand-titles">
                     <h1>جامعة حمص</h1>
-                    <h2>كلية الهندسة المعمارية</h2>
+                    <h2>منصة الرندرة المعمارية الذكية</h2>
                 </div>
             </div>
-            
             <nav class="desktop-menu">
-                <ul>
-                    <li><a href="#workspace" class="active"><i class="fa-solid fa-microchip"></i> منصة الرندرة</a></li>
-                    <li><a href="#gallery"><i class="fa-solid fa-images"></i> معرض المشاريع</a></li>
-                    <li><a href="#about"><i class="fa-solid fa-building-columns"></i> عن المختبر</a></li>
-                    <li><a href="#developer"><i class="fa-solid fa-code"></i> المطور</a></li>
-                </ul>
+                <a href="#" class="nav-link active" data-tab="chat"><i class="fa-solid fa-comments"></i> AI Chat</a>
+                <a href="#" class="nav-link" data-tab="sketch"><i class="fa-solid fa-pen-ruler"></i> رسمة</a>
+                <a href="#" class="nav-link" data-tab="text"><i class="fa-solid fa-keyboard"></i> نص</a>
+                <a href="#" class="nav-link" data-tab="image"><i class="fa-solid fa-image"></i> صورة</a>
+                <a href="#" class="nav-link" data-tab="floorplan"><i class="fa-solid fa-building"></i> البلان</a>
+                <a href="#" class="nav-link" data-tab="autocad"><i class="fa-solid fa-cube"></i> AutoCAD</a>
+                <a href="#" class="nav-link" data-tab="edit"><i class="fa-solid fa-wand-magic-sparkles"></i> تحرير</a>
+                <a href="#" class="nav-link" data-tab="upscale"><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير</a>
+                <a href="#" class="nav-link" data-tab="video"><i class="fa-solid fa-video"></i> فيديو</a>
             </nav>
-
-            <div class="user-actions">
-                <button class="btn-outline-green"><i class="fa-solid fa-user"></i> تسجيل دخول طالب</button>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" title="تبديل الثيم">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="tutorialBtn" class="tutorial-btn" title="فيديو تعليمي">
+                    <i class="fa-solid fa-circle-play"></i>
+                </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-bg-elements"></div>
         <div class="container hero-content">
-            <div class="hero-text-area">
-                <span class="badge-pro"><i class="fa-solid fa-bolt"></i> الأسرع والأدق في سوريا</span>
-                <h1 class="hero-title">مختبر <span class="text-gradient-green">الذكاء الاصطناعي</span> المعماري</h1>
-                <p class="hero-subtitle">قم بصياغة خيالك الهندسي وتحويله إلى واقع ملموس بدقة 8K، مصمم خصيصاً لطلاب العمارة في جامعة حمص لدعم مشاريع التخرج والتصميم.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <h3>+10,000</h3>
-                        <p>رندر مكتمل</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>4K & 8K</h3>
-                        <p>دقة التصدير</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>Nano Banana</h3>
-                        <p>المحرك الأساسي</p>
-                    </div>
+            <span class="badge-pro"><i class="fa-solid fa-wand-magic-sparkles"></i> الإصدار الاحترافي الكامل</span>
+            <h1 class="hero-title">مساعدك في الرندرة المعمارية الذكية</h1>
+            <p class="hero-subtitle">عرض مفاهيمك بسهولة واحصل على موافقة العملاء بسرعة. منصة متكاملة للمعماريين والمصممين.</p>
+            <div style="margin-top: 2rem;">
+                <button class="btn-hero" onclick="switchTab('chat')">
+                    <i class="fa-solid fa-play"></i> ابدأ الآن
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-star"></i> الميزات الرئيسية</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-pen-ruler"></i>
+                    <h3>رسمة إلى رندرة</h3>
+                    <p>حول رسوماتك اليدوية إلى رندرات معمارية احترافية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <h3>نص إلى رندرة</h3>
+                    <p>اكتب وصف المشروع واحصل على رندرة فورية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-image"></i>
+                    <h3>صورة إلى رندرة</h3>
+                    <p>حول أي صورة إلى رندرة معمارية احترافية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <h3>تحرير وتحسين</h3>
+                    <p>عدّل الرندرات وحسّنها حسب احتياجاتك</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    <h3>تكبير الدقة</h3>
+                    <p>رفع دقة الصور إلى 8x بجودة عالية جداً</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-video"></i>
+                    <h3>إنشاء فيديو</h3>
+                    <p>حول الرندرات إلى فيديوهات احترافية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>تصميم البلان</h3>
+                    <p>صمّم بلانات معمارية بمعايير دولية</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-cube"></i>
+                    <h3>تحويل إلى AutoCAD</h3>
+                    <p>حول البلانات إلى ملفات DXF احترافية</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Workspace Section -->
-    <section id="workspace" class="workspace-section">
+    <!-- Tabs Section -->
+    <section class="tabs-section">
         <div class="container">
-            <div class="section-header text-center">
-                <h2><i class="fa-solid fa-pen-ruler"></i> استوديو التصميم الذكي</h2>
-                <p>أدخل معطيات مشروعك وحدد الخصائص الهندسية المطلوبة</p>
-            </div>
 
-            <div class="workspace-grid">
-                
-                <!-- Settings Panel -->
-                <aside class="settings-panel panel-glass">
-                    <div class="panel-header">
-                        <h3><i class="fa-solid fa-sliders"></i> محددات المشروع</h3>
-                    </div>
-                    
-                    <div class="setting-group">
-                        <label>النمط المعماري (Style)</label>
-                        <select id="archStyle" class="pro-select">
-                            <option value="modern">حديث (Modern)</option>
-                            <option value="damascene">عربي دمشقي (Damascene)</option>
-                            <option value="islamic">إسلامي معاصر (Contemporary Islamic)</option>
-                            <option value="parametric">بارامتريك (Parametric)</option>
-                            <option value="brutalist">عمارة وحشية (Brutalist)</option>
-                            <option value="classic">كلاسيكي (Classic)</option>
-                        </select>
-                    </div>
-
-                    <div class="setting-group">
-                        <label>الإضاءة والبيئة (Lighting & Environment)</label>
-                        <select id="lightingStyle" class="pro-select">
-                            <option value="daylight">إضاءة نهارية واقعية</option>
-                            <option value="sunset">ساعة الغروب (Golden Hour)</option>
-                            <option value="night">إضاءة ليلية دراماتيكية</option>
-                            <option value="overcast">غائم (Soft Shadows)</option>
-                        </select>
-                    </div>
-
-                    <div class="setting-group">
-                        <label>نسبة الأبعاد (Aspect Ratio)</label>
-                        <div class="ratio-options">
-                            <label class="ratio-btn">
-                                <input type="radio" name="ratio" value="16:9" checked>
-                                <span>16:9<br><small>Landscape</small></span>
-                            </label>
-                            <label class="ratio-btn">
-                                <input type="radio" name="ratio" value="1:1">
-                                <span>1:1<br><small>Square</small></span>
-                            </label>
-                            <label class="ratio-btn">
-                                <input type="radio" name="ratio" value="9:16">
-                                <span>9:16<br><small>Portrait</small></span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="setting-group">
-                        <label>جودة الرندر (Quality Settings)</label>
-                        <input type="range" min="1" max="100" value="80" class="pro-slider" id="qualitySlider">
-                        <div class="slider-labels">
-                            <span>سريع</span>
-                            <span>عالي الدقة</span>
-                        </div>
-                    </div>
-                </aside>
-
-                <!-- Main Canvas Area -->
-                <div class="main-canvas-area panel-glass">
-                    <div class="prompt-container">
-                        <label for="promptInput" class="prompt-label">
-                            <i class="fa-solid fa-keyboard"></i> الوصف التفصيلي للكتلة (Prompt)
-                        </label>
-                        <textarea id="promptInput" class="pro-textarea" placeholder="اكتب وصفاً دقيقاً باللغة الإنكليزية للحصول على أفضل النتائج... 
-مثال: Modern university campus building in Homs, featuring large glass facades, green terraces, surrounded by olive trees, hyper-realistic, 8k resolution, architectural photography."></textarea>
-                        
-                        <div class="prompt-actions">
-                            <button class="btn-clear" onclick="clearPrompt()"><i class="fa-solid fa-trash-can"></i> مسح</button>
-                            <button class="btn-magic" id="enhancePromptBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> تحسين الوصف تلقائياً</button>
-                        </div>
-                    </div>
-
-                    <button id="generateBtn" class="btn-generate-massive">
-                        <span class="btn-text">بدء عملية الرندرة السيادية</span>
-                        <div class="btn-glow"></div>
-                        <i class="fa-solid fa-cube btn-icon"></i>
-                    </button>
-
-                    <div id="resultContainer" class="render-output-box">
-                        <div class="idle-state">
-                            <i class="fa-regular fa-image placeholder-icon"></i>
-                            <p id="statusText">المنصة بانتظار إرسال البيانات للمعالجة...</p>
-                            <small>سيتم عرض الصورة المعمارية هنا</small>
-                        </div>
-                        
-                        <div class="loading-state hidden" id="loadingState">
-                            <div class="syrian-spinner"></div>
-                            <p>جاري تحليل الكتلة وتوليد الإضاءة...</p>
-                        </div>
-                    </div>
-
-                    <div class="post-render-actions hidden" id="postRenderActions">
-                        <button class="btn-action btn-download"><i class="fa-solid fa-download"></i> تحميل 8K</button>
-                        <button class="btn-action btn-share"><i class="fa-solid fa-share-nodes"></i> مشاركة</button>
-                        <button class="btn-action btn-upscale"><i class="fa-solid fa-magnifying-glass-plus"></i> زيادة الدقة (Upscale)</button>
-                    </div>
+            <!-- Chat Tab -->
+            <div id="chat" class="tab-content active">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-comments"></i> محادثة ذكية مع AI</h2>
+                    <p>احصل على استشارات معمارية فورية من الذكاء الاصطناعي</p>
                 </div>
 
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <i class="fa-solid fa-robot"></i>
+                            <p>مرحباً! أنا مساعدك المعماري الذكي. كيف يمكنني مساعدتك اليوم؟</p>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="اكتب سؤالك..." class="chat-input">
+                        <button onclick="sendMessage()" class="chat-send-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
+
+            <!-- Sketch to Render Tab -->
+            <div id="sketch" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-pen-ruler"></i> تحويل الرسمة إلى رندرة</h2>
+                    <p>حول رسوماتك اليدوية إلى رندرات معمارية احترافية</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-upload"></i> رفع الرسمة</h3>
+                        </div>
+
+                        <div class="upload-area" id="sketchUploadArea">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>اسحب الرسمة هنا</h4>
+                                <p>أو انقر لاختيار ملف</p>
+                            </div>
+                        </div>
+                        <input type="file" id="sketchInput" class="file-input" accept="image/*">
+                        <div id="sketchPreview" style="display: none; margin-bottom: 1rem;">
+                            <img id="sketchPreviewImg" style="width: 100%; border-radius: 0.5rem;">
+                        </div>
+
+                        <div class="setting-group">
+                            <label>النمط المعماري</label>
+                            <select id="sketchStyle" class="pro-select">
+                                <option value="modern">عصري معاصر</option>
+                                <option value="classic">كلاسيكي</option>
+                                <option value="gulf">خليجي</option>
+                                <option value="islamic">إسلامي</option>
+                                <option value="parametric">بارامتريك</option>
+                                <option value="wild">وحشي</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>الإضاءة</label>
+                            <select id="sketchLighting" class="pro-select">
+                                <option value="daylight">نهاري</option>
+                                <option value="sunset">غروب</option>
+                                <option value="night">ليلي</option>
+                                <option value="cloudy">غائم</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>جودة الرندرة</label>
+                            <select id="sketchQuality" class="pro-select">
+                                <option value="4k">4K</option>
+                                <option value="8k">8K</option>
+                                <option value="16k">16K</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>وصف إضافي</label>
+                            <textarea id="sketchDescription" class="pro-textarea" placeholder="أضف تفاصيل إضافية..."></textarea>
+                        </div>
+
+                        <button class="btn-generate" onclick="renderSketch()">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>بدء الرندرة</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-image"></i> الرندرة</h3>
+                        </div>
+                        <div id="sketchOutput" class="render-output">
+                            <i class="fa-regular fa-image placeholder-icon"></i>
+                            <p>سيتم عرض الرندرة هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text to Render Tab -->
+            <div id="text" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-keyboard"></i> تحويل النص إلى رندرة</h2>
+                    <p>اكتب وصف المشروع واحصل على رندرة معمارية فورية</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-keyboard"></i> وصف المشروع</h3>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>اسم المشروع</label>
+                            <input type="text" id="projectTitle" class="pro-input" placeholder="مثال: فيلا حديثة">
+                        </div>
+
+                        <div class="setting-group">
+                            <label>وصف تفصيلي</label>
+                            <textarea id="projectDescription" class="pro-textarea" placeholder="اكتب وصف المشروع بالتفصيل..."></textarea>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>النمط</label>
+                            <select id="textStyle" class="pro-select">
+                                <option value="modern">عصري معاصر</option>
+                                <option value="classic">كلاسيكي</option>
+                                <option value="gulf">خليجي</option>
+                                <option value="islamic">إسلامي</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>الإضاءة</label>
+                            <select id="textLighting" class="pro-select">
+                                <option value="daylight">نهاري</option>
+                                <option value="sunset">غروب</option>
+                                <option value="night">ليلي</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-generate" onclick="renderText()">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>إنشاء الرندرة</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-image"></i> الرندرة</h3>
+                        </div>
+                        <div id="textOutput" class="render-output">
+                            <i class="fa-regular fa-image placeholder-icon"></i>
+                            <p>سيتم عرض الرندرة هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image to Render Tab -->
+            <div id="image" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-image"></i> تحويل الصورة إلى رندرة</h2>
+                    <p>حول أي صورة إلى رندرة معمارية احترافية</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-upload"></i> رفع الصورة</h3>
+                        </div>
+
+                        <div class="upload-area" id="imageUploadArea">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>اسحب الصورة هنا</h4>
+                                <p>أو انقر لاختيار ملف</p>
+                            </div>
+                        </div>
+                        <input type="file" id="imageInput" class="file-input" accept="image/*">
+                        <div id="imagePreview" style="display: none; margin-bottom: 1rem;">
+                            <img id="imagePreviewImg" style="width: 100%; border-radius: 0.5rem;">
+                        </div>
+
+                        <div class="setting-group">
+                            <label>نوع التحويل</label>
+                            <select id="imageConversion" class="pro-select">
+                                <option value="realistic">واقعي</option>
+                                <option value="artistic">فني</option>
+                                <option value="sketch">رسمة</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>النمط</label>
+                            <select id="imageStyle" class="pro-select">
+                                <option value="modern">عصري</option>
+                                <option value="classic">كلاسيكي</option>
+                                <option value="gulf">خليجي</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-generate" onclick="renderImage()">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>تحويل الصورة</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-image"></i> الرندرة</h3>
+                        </div>
+                        <div id="imageOutput" class="render-output">
+                            <i class="fa-regular fa-image placeholder-icon"></i>
+                            <p>سيتم عرض الرندرة هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floor Plan Tab -->
+            <div id="floorplan" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-building"></i> تصميم البلان المعماري</h2>
+                    <p>صمّم بلانات معمارية احترافية بمعايير دولية</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-list-check"></i> بيانات المشروع</h3>
+                        </div>
+
+                        <div class="form-section">
+                            <h4 class="form-section-title">📋 بيانات الموقع</h4>
+                            
+                            <div class="setting-group">
+                                <label>أبعاد القطعة (عرض × عمق)</label>
+                                <div class="input-group">
+                                    <input type="number" id="plotWidth" class="pro-input" placeholder="العرض" min="5">
+                                    <span>×</span>
+                                    <input type="number" id="plotDepth" class="pro-input" placeholder="العمق" min="5">
+                                </div>
+                            </div>
+
+                            <div class="setting-group">
+                                <label>عدد غرف النوم</label>
+                                <input type="number" id="bedroomCount" class="pro-input" placeholder="عدد الغرف" min="1">
+                            </div>
+
+                            <div class="setting-group">
+                                <label>عدد الحمامات</label>
+                                <input type="number" id="bathCount" class="pro-input" placeholder="عدد الحمامات" min="1">
+                            </div>
+
+                            <div class="setting-group">
+                                <label>عدد السيارات</label>
+                                <input type="number" id="carCount" class="pro-input" placeholder="عدد السيارات" min="1">
+                            </div>
+                        </div>
+
+                        <button class="btn-generate" onclick="generateFloorPlan()">
+                            <i class="fa-solid fa-building"></i>
+                            <span>تصميم البلان</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-file-lines"></i> المخرجات</h3>
+                        </div>
+                        <div id="floorplanOutput" class="render-output">
+                            <i class="fa-regular fa-file placeholder-icon"></i>
+                            <p>سيتم عرض البلان هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AutoCAD Tab -->
+            <div id="autocad" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-cube"></i> تحويل إلى AutoCAD DXF</h2>
+                    <p>حول البلانات إلى ملفات DXF احترافية</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-upload"></i> المدخلات</h3>
+                        </div>
+
+                        <div class="upload-area" id="dxfUploadArea">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>اسحب البلان هنا</h4>
+                                <p>أو انقر لاختيار ملف</p>
+                            </div>
+                        </div>
+                        <input type="file" id="dxfInput" class="file-input" accept="image/*">
+
+                        <button class="btn-generate" onclick="generateDXFCode()">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>توليد كود Python</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-code"></i> كود Python</h3>
+                        </div>
+
+                        <div id="dxfLoading" class="loading">
+                            <div class="spinner"></div>
+                            <div class="countdown-timer">
+                                <span id="countdownDisplay">30</span>
+                                <p>ثانية</p>
+                            </div>
+                            <p>جاري توليد الكود...</p>
+                        </div>
+
+                        <div id="dxfOutput" style="display: none;">
+                            <button class="copy-btn" onclick="copyCode()">
+                                <i class="fa-solid fa-copy"></i> نسخ الكود
+                            </button>
+                            <div class="code-block">
+                                <code id="generatedCode"></code>
+                            </div>
+                            <button class="btn-generate" onclick="downloadCode()">
+                                <i class="fa-solid fa-download"></i> تحميل Plan.py
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit & Enhance Tab -->
+            <div id="edit" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> تحرير وتحسين</h2>
+                    <p>عدّل الرندرات وحسّنها حسب احتياجاتك</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-upload"></i> رفع الرندرة</h3>
+                        </div>
+
+                        <div class="upload-area" id="editUploadArea">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>اسحب الرندرة هنا</h4>
+                                <p>أو انقر لاختيار ملف</p>
+                            </div>
+                        </div>
+                        <input type="file" id="editInput" class="file-input" accept="image/*">
+
+                        <div class="setting-group">
+                            <label>نوع التحسين</label>
+                            <select id="enhanceType" class="pro-select">
+                                <option value="materials">تحسين المواد</option>
+                                <option value="lighting">تحسين الإضاءة</option>
+                                <option value="furniture">إضافة أثاث</option>
+                                <option value="colors">تغيير الألوان</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>وصف التعديل</label>
+                            <textarea id="editDescription" class="pro-textarea" placeholder="اكتب التعديلات المطلوبة..."></textarea>
+                        </div>
+
+                        <button class="btn-generate" onclick="enhanceRender()">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>تحسين الرندرة</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-image"></i> الرندرة المحسّنة</h3>
+                        </div>
+                        <div id="editOutput" class="render-output">
+                            <i class="fa-regular fa-image placeholder-icon"></i>
+                            <p>سيتم عرض الرندرة المحسّنة هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upscale Tab -->
+            <div id="upscale" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-magnifying-glass-plus"></i> تكبير الدقة</h2>
+                    <p>رفع دقة الصور إلى 8x بجودة عالية جداً</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-upload"></i> رفع الصورة</h3>
+                        </div>
+
+                        <div class="upload-area" id="upscaleUploadArea">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>اسحب الصورة هنا</h4>
+                                <p>أو انقر لاختيار ملف</p>
+                            </div>
+                        </div>
+                        <input type="file" id="upscaleInput" class="file-input" accept="image/*">
+
+                        <div class="setting-group">
+                            <label>مستوى التكبير</label>
+                            <select id="upscaleLevel" class="pro-select">
+                                <option value="2x">2x</option>
+                                <option value="4x">4x</option>
+                                <option value="8x">8x</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-generate" onclick="upscaleImage()">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            <span>تكبير الدقة</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-image"></i> الصورة المكبّرة</h3>
+                        </div>
+                        <div id="upscaleOutput" class="render-output">
+                            <i class="fa-regular fa-image placeholder-icon"></i>
+                            <p>سيتم عرض الصورة المكبّرة هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Tab -->
+            <div id="video" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-video"></i> إنشاء فيديو</h2>
+                    <p>حول الرندرات إلى فيديوهات احترافية</p>
+                </div>
+
+                <div class="workspace-grid">
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-upload"></i> رفع الصورة</h3>
+                        </div>
+
+                        <div class="upload-area" id="videoUploadArea">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>اسحب الصورة هنا</h4>
+                                <p>أو انقر لاختيار ملف</p>
+                            </div>
+                        </div>
+                        <input type="file" id="videoInput" class="file-input" accept="image/*">
+
+                        <div class="setting-group">
+                            <label>نوع الحركة</label>
+                            <select id="videoMotion" class="pro-select">
+                                <option value="pan">تحريك جانبي</option>
+                                <option value="zoom">تكبير</option>
+                                <option value="rotate">دوران</option>
+                                <option value="flyover">تحليق</option>
+                            </select>
+                        </div>
+
+                        <div class="setting-group">
+                            <label>مدة الفيديو</label>
+                            <select id="videoDuration" class="pro-select">
+                                <option value="10s">10 ثواني</option>
+                                <option value="15s">15 ثانية</option>
+                                <option value="30s">30 ثانية</option>
+                                <option value="60s">دقيقة واحدة</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-generate" onclick="generateVideo()">
+                            <i class="fa-solid fa-video"></i>
+                            <span>إنشاء الفيديو</span>
+                        </button>
+                    </div>
+
+                    <div class="panel-glass">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-video"></i> الفيديو</h3>
+                        </div>
+                        <div id="videoOutput" class="render-output">
+                            <i class="fa-regular fa-video placeholder-icon"></i>
+                            <p>سيتم عرض الفيديو هنا</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
+    <section class="gallery-section">
         <div class="container">
-            <div class="section-header text-center">
-                <h2><i class="fa-solid fa-trophy"></i> لوحة الشرف المعمارية</h2>
-                <p>أبرز الرندرات التي تم توليدها بواسطة طلاب جامعة حمص</p>
-            </div>
-            
+            <h2 class="section-title"><i class="fa-solid fa-images"></i> معرض المشاريع</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <div class="gallery-img-placeholder">
-                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663058953049/CTLGhCweHHB2cVtgPX2ihQ/gallery-cultural-center-9NPmN5cAYU33tzS63pTnTY.webp" alt="مركز ثقافي">
-                    </div>
+                    <img src="https://via.placeholder.com/300x200?text=مشروع+1" alt="مشروع 1">
                     <div class="gallery-info">
-                        <h4>مركز ثقافي بدمشق</h4>
-                        <p>النمط: بارامتريك | بواسطة: طالب سنة رابعة</p>
+                        <h3>فيلا حديثة</h3>
+                        <p>تصميم عصري معاصر</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-img-placeholder">
-                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663058953049/CTLGhCweHHB2cVtgPX2ihQ/gallery-medical-complex-8bNQrmc3CFLt3Np5AzBgmq.webp" alt="مجمع طبي">
-                    </div>
+                    <img src="https://via.placeholder.com/300x200?text=مشروع+2" alt="مشروع 2">
                     <div class="gallery-info">
-                        <h4>مجمع طبي في حمص</h4>
-                        <p>النمط: حديث | بواسطة: طالبة سنة خامسة</p>
+                        <h3>مركز تجاري</h3>
+                        <p>تصميم خليجي فاخر</p>
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <div class="gallery-img-placeholder">
-                        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663058953049/CTLGhCweHHB2cVtgPX2ihQ/gallery-waterfront-development-3UHQw8EzK8TrmaE9veus2H.webp" alt="إعادة إعمار">
-                    </div>
+                    <img src="https://via.placeholder.com/300x200?text=مشروع+3" alt="مشروع 3">
                     <div class="gallery-info">
-                        <h4>إعادة إعمار الواجهة المائية</h4>
-                        <p>النمط: مستدام | مشاريع التخرج 2026</p>
+                        <h3>مسجد أثري</h3>
+                        <p>تصميم إسلامي تقليدي</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=مشروع+4" alt="مشروع 4">
+                    <div class="gallery-info">
+                        <h3>مستشفى حديث</h3>
+                        <p>تصميم بارامتريك</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=مشروع+5" alt="مشروع 5">
+                    <div class="gallery-info">
+                        <h3>فندق فاخر</h3>
+                        <p>تصميم كلاسيكي</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=مشروع+6" alt="مشروع 6">
+                    <div class="gallery-info">
+                        <h3>مجمع سكني</h3>
+                        <p>تصميم وحشي</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="developer" class="pro-footer">
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
         <div class="container">
-            <div class="footer-grid">
-                
-                <div class="footer-col brand-col">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwSVajRk6xi66EKWS1S2dy3xlyr1McO6h2KRbCTrBjAuMvITf7svSe7aU&s=10" alt="شعار جامعة حمص">
-                    <p>كلية الهندسة المعمارية - مختبر الذكاء الاصطناعي</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-solid fa-globe"></i></a>
+            <h2 class="section-title"><i class="fa-solid fa-star"></i> آراء المستخدمين</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
+                    <p>"منصة رائعة جداً! وفّرت لي الكثير من الوقت في تصميم البلانات"</p>
+                    <h4>المهندس أحمد</h4>
+                    <span>معماري متخصص</span>
                 </div>
-
-                <div class="footer-col links-col">
-                    <h4>روابط هامة</h4>
-                    <ul>
-                        <li><a href="#">الموقع الرسمي للجامعة</a></li>
-                        <li><a href="#">مكتبة الكلية الرقمية</a></li>
-                        <li><a href="#">شؤون الطلاب</a></li>
-                        <li><a href="#">دعم تقني</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col developer-col">
-                    <h4>البصمة البرمجية</h4>
-                    <div class="dev-card">
-                        <i class="fa-solid fa-laptop-code dev-icon"></i>
-                        <div class="dev-details">
-                            <span class="dev-role">Chief Front-End Architect</span>
-                            <span class="dev-name">المهندس يزن ❤️</span>
-                        </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="dev-message">"تم بناء هذه المنصة لرفع مستوى الإخراج المعماري لزملائي في جامعة حمص، باستخدام أحدث تقنيات الويب والذكاء الاصطناعي."</p>
+                    <p>"الرندرات احترافية جداً والعملاء معجبون جداً بالنتائج"</p>
+                    <h4>المهندسة فاطمة</h4>
+                    <span>مصممة داخلية</span>
                 </div>
-
-            </div>
-
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p>&copy; 2026 جميع الحقوق محفوظة لجامعة حمص والمهندس المطور.</p>
-                </div>
-                <div class="national-strip-footer">
-                    <div class="color-red"></div>
-                    <div class="color-white"></div>
-                    <div class="color-green"></div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"أفضل منصة استخدمتها! سهلة جداً وفعّالة"</p>
+                    <h4>المهندس محمد</h4>
+                    <span>مهندس معماري</span>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal-overlay hidden">
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal"><i class="fa-solid fa-xmark"></i></span>
-            <img id="modalImage" src="" alt="رندر مكبر">
-            <div class="modal-actions">
-                <button class="btn-outline-green"><i class="fa-solid fa-download"></i> حفظ الصورة</button>
+            <button class="modal-close" onclick="closeTutorial()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2><i class="fa-solid fa-circle-play"></i> فيديو تعليمي: تحويل البلان إلى AutoCAD</h2>
+            
+            <div class="tutorial-video">
+                <video id="tutorialVideo" controls>
+                    <source src="https://example.com/tutorial.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو
+                </video>
+            </div>
+
+            <div class="tutorial-steps">
+                <h3>خطوات التشغيل:</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>تثبيت Python</h4>
+                        <p>حمّل Python 3.7+ من python.org</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>تثبيت المكتبة</h4>
+                        <p>اكتب في CMD: <code>pip install ezdxf</code></p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>إنشاء الملف</h4>
+                        <p>أنشئ ملف جديد باسم Plan.py</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4>الصق الكود</h4>
+                        <p>الصق الكود المولد في الملف</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">5</div>
+                        <h4>شغّل الملف</h4>
+                        <p>اضغط عليه مرتين أو اكتب: <code>python Plan.py</code></p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">6</div>
+                        <h4>افتح في AutoCAD</h4>
+                        <p>افتح ملف Architectural_Plan.dxf</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tutorial-tips">
+                <h3><i class="fa-solid fa-lightbulb"></i> نصائح مهمة:</h3>
+                <ul>
+                    <li>✅ تأكد من تثبيت Python بشكل صحيح</li>
+                    <li>✅ استخدم CMD من نفس مجلد الملف</li>
+                    <li>✅ الملف سيظهر في نفس المجلد</li>
+                    <li>✅ يمكنك تعديل الكود حسب احتياجاتك</li>
+                    <li>✅ الملف جاهز للطباعة والتعديل</li>
+                </ul>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="pro-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 جميع الحقوق محفوظة لجامعة حمص - منصة الرندرة المعمارية الذكية</p>
+            <p style="margin-top: 1rem; font-size: 0.75rem;">يستخدمها 500,000+ معماري حول العالم | تم تطويره بواسطة: المهندس يزن ❤️</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
+
 </body>
 </html>
