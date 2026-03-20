@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة الرندرة المعمارية الذكية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="syrian-flag"></div>
+            <span>الجمهورية العربية السورية - وزارة التعليم العالي</span>
+        </div>
+        <div class="header-main">
+            <div class="logo">
+                <h1>🏛️ جامعة حمص</h1>
+                <p>منصة الرندرة المعمارية الذكية</p>
+            </div>
+            <div class="controls">
+                <button id="themeToggle" class="theme-btn" title="تبديل الثيم">🌙</button>
+                <button id="tutorialBtn" class="tutorial-btn" title="فيديو تعليمي">📚</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-container">
+        <button class="tab-btn active" data-tab="chat">🤖 AI Chat</button>
+        <button class="tab-btn" data-tab="sketch">🖍️ رسمة</button>
+        <button class="tab-btn" data-tab="text">📝 نص</button>
+        <button class="tab-btn" data-tab="image">🖼️ صورة</button>
+        <button class="tab-btn" data-tab="floorplan">🏗️ البلان</button>
+        <button class="tab-btn" data-tab="autocad">🧊 AutoCAD</button>
+        <button class="tab-btn" data-tab="edit">✨ تحرير</button>
+        <button class="tab-btn" data-tab="upscale">🔍 تكبير</button>
+        <button class="tab-btn" data-tab="video">🎬 فيديو</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Chat Tab -->
+        <section id="chat-tab" class="tab-content active">
+            <div class="section-title">🤖 محادثة ذكية مع AI</div>
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <div class="message bot-message">
+                        <p>مرحباً! أنا مساعدك المعماري الذكي. كيف يمكنني مساعدتك اليوم؟</p>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="اكتب سؤالك..." />
+                    <button id="sendChatBtn" class="btn btn-primary">إرسال</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sketch Tab -->
+        <section id="sketch-tab" class="tab-content">
+            <div class="section-title">🖍️ تحويل الرسمة إلى رندرة</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <div id="sketchUploadArea" class="upload-area">
+                        <p>📤 اسحب الرسمة هنا أو انقر لاختيار ملف</p>
+                        <input type="file" id="sketchFile" accept="image/*" style="display:none;">
+                    </div>
+                    <div id="sketchPreview" class="preview-area" style="display:none;">
+                        <img id="sketchPreviewImg" src="" alt="معاينة الرسمة">
+                    </div>
+                </div>
+                <div class="options-section">
+                    <label>النمط المعماري:</label>
+                    <select id="sketchStyle">
+                        <option>عصري معاصر</option>
+                        <option>كلاسيكي</option>
+                        <option>خليجي</option>
+                        <option>إسلامي</option>
+                        <option>بارامتريك</option>
+                        <option>وحشي</option>
+                    </select>
+
+                    <label>الإضاءة:</label>
+                    <select id="sketchLighting">
+                        <option>نهاري</option>
+                        <option>غروب</option>
+                        <option>ليلي</option>
+                        <option>غائم</option>
+                    </select>
+
+                    <label>جودة الرندرة:</label>
+                    <select id="sketchQuality">
+                        <option>4K</option>
+                        <option>8K</option>
+                        <option>16K</option>
+                    </select>
+
+                    <label>وصف إضافي:</label>
+                    <textarea id="sketchDescription" placeholder="أضف تفاصيل إضافية..."></textarea>
+
+                    <button id="renderSketchBtn" class="btn btn-primary btn-large">بدء الرندرة</button>
+                </div>
+            </div>
+            <div id="sketchResult" class="result-section" style="display:none;">
+                <h3>نتيجة الرندرة:</h3>
+                <img id="sketchResultImg" src="" alt="نتيجة الرندرة">
+                <button class="btn btn-secondary">تحميل الصورة</button>
+                <button class="btn btn-secondary">مشاركة</button>
+            </div>
+        </section>
+
+        <!-- Text Tab -->
+        <section id="text-tab" class="tab-content">
+            <div class="section-title">📝 إنشاء رندرة من النص</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <textarea id="textPrompt" placeholder="اكتب وصف المشروع بالتفصيل..." class="large-textarea"></textarea>
+                </div>
+                <div class="options-section">
+                    <label>النمط:</label>
+                    <select id="textStyle">
+                        <option>عصري</option>
+                        <option>كلاسيكي</option>
+                        <option>تقليدي</option>
+                        <option>بارامتريك</option>
+                    </select>
+
+                    <label>الجودة:</label>
+                    <select id="textQuality">
+                        <option>4K</option>
+                        <option>8K</option>
+                        <option>16K</option>
+                    </select>
+
+                    <button id="renderTextBtn" class="btn btn-primary btn-large">توليد الرندرة</button>
+                </div>
+            </div>
+            <div id="textResult" class="result-section" style="display:none;">
+                <h3>الرندرة المولدة:</h3>
+                <img id="textResultImg" src="" alt="الرندرة">
+                <button class="btn btn-secondary">تحميل</button>
+            </div>
+        </section>
+
+        <!-- Image Tab -->
+        <section id="image-tab" class="tab-content">
+            <div class="section-title">🖼️ تحويل الصورة إلى رندرة</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <div id="imageUploadArea" class="upload-area">
+                        <p>📤 اسحب الصورة هنا أو انقر</p>
+                        <input type="file" id="imageFile" accept="image/*" style="display:none;">
+                    </div>
+                    <div id="imagePreview" class="preview-area" style="display:none;">
+                        <img id="imagePreviewImg" src="" alt="معاينة">
+                    </div>
+                </div>
+                <div class="options-section">
+                    <label>نوع التحويل:</label>
+                    <select id="imageConversionType">
+                        <option>تحويل معماري</option>
+                        <option>تحسين الجودة</option>
+                        <option>تغيير الأسلوب</option>
+                    </select>
+
+                    <label>النمط:</label>
+                    <select id="imageStyle">
+                        <option>حديث</option>
+                        <option>تقليدي</option>
+                        <option>فاخر</option>
+                    </select>
+
+                    <button id="convertImageBtn" class="btn btn-primary btn-large">تحويل الآن</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Floor Plan Tab -->
+        <section id="floorplan-tab" class="tab-content">
+            <div class="section-title">🏗️ تصميم البلان المعماري</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <h4>بيانات المشروع</h4>
+                    <input type="text" id="projectName" placeholder="اسم المشروع" class="form-input">
+                    <input type="number" id="plotWidth" placeholder="عرض القطعة (م)" class="form-input">
+                    <input type="number" id="plotDepth" placeholder="عمق القطعة (م)" class="form-input">
+                    <input type="number" id="totalArea" placeholder="المساحة الكلية (م²)" class="form-input">
+                </div>
+                <div class="options-section">
+                    <h4>البيانات الوظيفية</h4>
+                    <input type="number" id="bedroomCount" placeholder="عدد غرف النوم" class="form-input">
+                    <input type="number" id="bathCount" placeholder="عدد الحمامات" class="form-input">
+                    <input type="number" id="kitchenType" placeholder="نوع المطبخ" class="form-input">
+                    <input type="number" id="carCount" placeholder="عدد السيارات" class="form-input">
+                    
+                    <label>الأسلوب المعماري:</label>
+                    <select id="floorplanStyle">
+                        <option>عصري</option>
+                        <option>كلاسيكي</option>
+                        <option>إسلامي</option>
+                    </select>
+
+                    <button id="designFloorplanBtn" class="btn btn-primary btn-large">تصميم البلان</button>
+                </div>
+            </div>
+            <div id="floorplanResult" class="result-section" style="display:none;">
+                <h3>البلان المصمم:</h3>
+                <img id="floorplanResultImg" src="" alt="البلان">
+                <button class="btn btn-secondary">تحميل</button>
+            </div>
+        </section>
+
+        <!-- AutoCAD Tab -->
+        <section id="autocad-tab" class="tab-content">
+            <div class="section-title">🧊 تحويل إلى AutoCAD DXF</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <div id="dxfUploadArea" class="upload-area">
+                        <p>📤 اسحب البلان هنا أو انقر</p>
+                        <input type="file" id="dxfFile" accept="image/*" style="display:none;">
+                    </div>
+                    <div id="dxfPreview" class="preview-area" style="display:none;">
+                        <img id="dxfPreviewImg" src="" alt="معاينة">
+                    </div>
+                </div>
+                <div class="options-section">
+                    <h4>معلومات المشروع</h4>
+                    <input type="text" id="dxfProjectName" placeholder="اسم المشروع" class="form-input">
+                    <input type="text" id="dxfArchitect" placeholder="اسم المعماري" class="form-input">
+                    <input type="text" id="dxfScale" placeholder="المقياس (1:100)" class="form-input">
+                    
+                    <button id="generateDXFBtn" class="btn btn-primary btn-large">توليد ملف DXF</button>
+                </div>
+            </div>
+            <div id="dxfResult" class="result-section" style="display:none;">
+                <h3>الملف جاهز للتحميل:</h3>
+                <p>تم توليد ملف AutoCAD بنجاح</p>
+                <button id="downloadDXFBtn" class="btn btn-primary">تحميل ملف DXF</button>
+                <button class="btn btn-secondary">نسخ الكود</button>
+            </div>
+        </section>
+
+        <!-- Edit Tab -->
+        <section id="edit-tab" class="tab-content">
+            <div class="section-title">✨ تحرير وتحسين الرندرات</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <div id="editUploadArea" class="upload-area">
+                        <p>📤 اسحب الرندرة هنا</p>
+                        <input type="file" id="editFile" accept="image/*" style="display:none;">
+                    </div>
+                    <div id="editPreview" class="preview-area" style="display:none;">
+                        <img id="editPreviewImg" src="" alt="معاينة">
+                    </div>
+                </div>
+                <div class="options-section">
+                    <label>نوع التعديل:</label>
+                    <select id="editType">
+                        <option>تغيير المواد</option>
+                        <option>تعديل الإضاءة</option>
+                        <option>إضافة أثاث</option>
+                        <option>تغيير الألوان</option>
+                        <option>تحسين الجودة</option>
+                    </select>
+
+                    <label>الوصف:</label>
+                    <textarea id="editDescription" placeholder="اشرح التعديلات المطلوبة..."></textarea>
+
+                    <button id="editRenderBtn" class="btn btn-primary btn-large">تطبيق التعديلات</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upscale Tab -->
+        <section id="upscale-tab" class="tab-content">
+            <div class="section-title">🔍 تكبير دقة الصور</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <div id="upscaleUploadArea" class="upload-area">
+                        <p>📤 اسحب الصورة هنا</p>
+                        <input type="file" id="upscaleFile" accept="image/*" style="display:none;">
+                    </div>
+                    <div id="upscalePreview" class="preview-area" style="display:none;">
+                        <img id="upscalePreviewImg" src="" alt="معاينة">
+                    </div>
+                </div>
+                <div class="options-section">
+                    <label>مستوى التكبير:</label>
+                    <select id="upscaleLevel">
+                        <option>2x</option>
+                        <option>4x</option>
+                        <option>8x</option>
+                    </select>
+
+                    <label>نوع التحسين:</label>
+                    <select id="upscaleType">
+                        <option>تحسين الجودة</option>
+                        <option>تحسين التفاصيل</option>
+                        <option>تحسين الألوان</option>
+                    </select>
+
+                    <button id="upscaleBtn" class="btn btn-primary btn-large">تكبير الدقة</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Tab -->
+        <section id="video-tab" class="tab-content">
+            <div class="section-title">🎬 إنشاء فيديو من الرندرات</div>
+            <div class="content-grid">
+                <div class="input-section">
+                    <div id="videoUploadArea" class="upload-area">
+                        <p>📤 اسحب الصورة هنا</p>
+                        <input type="file" id="videoFile" accept="image/*" style="display:none;">
+                    </div>
+                    <div id="videoPreview" class="preview-area" style="display:none;">
+                        <img id="videoPreviewImg" src="" alt="معاينة">
+                    </div>
+                </div>
+                <div class="options-section">
+                    <label>نوع الحركة:</label>
+                    <select id="videoMotion">
+                        <option>تدوير 360</option>
+                        <option>تكبير تدريجي</option>
+                        <option>انزلاق</option>
+                        <option>تلاشي</option>
+                    </select>
+
+                    <label>المدة (ثانية):</label>
+                    <select id="videoDuration">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>30</option>
+                    </select>
+
+                    <button id="createVideoBtn" class="btn btn-primary btn-large">إنشاء الفيديو</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Countdown Timer -->
+    <div id="countdownOverlay" class="countdown-overlay" style="display:none;">
+        <div class="countdown-container">
+            <p>جاري معالجة الرندرة...</p>
+            <div id="countdown" class="countdown">30</div>
+            <p>ثانية</p>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>🎓 فيديو تعليمي: كيفية تحويل البلان إلى AutoCAD</h2>
+            <div class="tutorial-video">
+                <video width="100%" height="auto" controls>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    متصفحك لا يدعم فيديو HTML5
+                </video>
+            </div>
+            <div class="tutorial-steps">
+                <h3>خطوات التشغيل:</h3>
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>تحميل Python 3.7+</h4>
+                        <p>من <a href="https://python.org" target="_blank">python.org</a></p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>تثبيت مكتبة ezdxf</h4>
+                        <p><code>pip install ezdxf</code></p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>إنشاء ملف Plan.py</h4>
+                        <p>انسخ الكود المولد من الموقع</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>تشغيل الملف</h4>
+                        <p><code>python Plan.py</code></p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>فتح في AutoCAD</h4>
+                        <p>افتح ملف Architectural_Plan.dxf</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>التعديل والحفظ</h4>
+                        <p>عدّل حسب احتياجاتك وحفظ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
